@@ -1,12 +1,14 @@
 <!-- ユーザーの詳細 -->
 <div>
-  <h3><%= @user.name %>さん</h3>
+  <h3><%= @user.name %>さんのマイページ</h3>
+    
    <p><%= link_to "名前を変える", edit_user_path(@user.id) %></p>
+   注意！<%= @user.name %>さんではない場合投稿一覧に戻ります。
   
 </div>
 
 <!-- ユーザーの投稿一覧 -->
-<h1>あなたの投稿一覧</h1>
+<h1><%= @user.name %>さんの投稿一覧</h1>
 <% @items.each do |item| %>
 <div>
   <p>タイトル：<%=link_to item.name, item_path(item.id)%></p>

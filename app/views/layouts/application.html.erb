@@ -2,33 +2,52 @@
 <html>
   <head>
     <title>Ecocoffee</title>
+    <style>
+  body {
+    background-image: url('<%= asset_path('images.jpg') %>');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-      <header>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><span>Ecocoffee</span></a>
+
+
+         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+  <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+        <ul class="navbar-nav ml-auto">
+
     <% if user_signed_in? %>
-     
+
     <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %> 
+      <%= link_to 'マイページ', user_path(current_user.id) %>
     </li>
-     
-     
-     
+
+
+
      <li>
         <%= link_to '投稿一覧', items_path %>
      </li>
-    
-    
+
+
      <li>
         <%= link_to '投稿フォーム', new_item_path %>
      </li>
-    
+
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
@@ -40,7 +59,12 @@
         <%= link_to "ログイン", new_user_session_path %>
       </li>
     <% end %>
+        </nav>
+
+ </ul>
+ </div>
   </header>
-    <%= yield %>
+    <body>
+      <%= yield %>
   </body>
 </html>
