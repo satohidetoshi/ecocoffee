@@ -1,0 +1,38 @@
+<h2>タイトル</h2>
+<p><%= @item.name %></p>
+
+<h2>説明</h2>
+<p><%= @item.explanation %></p>
+
+<h2>購入先</h2>
+<p><%= @item.shop %></p>
+
+<p>投稿日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
+
+  <% if @item.user == current_user %>
+    <%= link_to "削除", item_path(@item), method: :delete %>
+  <% end %>
+
+    <% if @item.user == current_user %>
+      <%= link_to '編集する', edit_item_path(@item.id) %></td>
+  <% end %>
+
+
+<div>
+  <p>コメント件数：<%= @item.comments.count %></p>
+  <% @item.comments.each do |comment| %>
+    <div><%= comment.user.name %>さん
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <%= link_to "削除", item_comment_path(@item, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+</div>
+
+<div>
+  <%= form_with model: [@item, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

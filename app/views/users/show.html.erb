@@ -1,0 +1,16 @@
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @user.name %>さん</h3>
+   <p><%= link_to "名前を変える", edit_user_path(@user.id) %></p>
+  
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+<h1>あなたの投稿一覧</h1>
+<% @items.each do |item| %>
+<div>
+  <p>タイトル：<%=link_to item.name, item_path(item.id)%></p>
+  <p>説明：<%= item.explanation %></p>
+  <p><%= link_to "#{item.comments.count} コメント", item_path(item.id) %></p>
+</div>
+<% end %>
