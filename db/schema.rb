@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2023_05_27_091707) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
     t.text "explanation"
-    t.string "shop"
+    t.text "shop"
     t.integer "user_id"
   end
 
