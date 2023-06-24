@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items
     @item_new = Item.new
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:item_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @bookmark_list = Item.find(bookmarks)
   end
 
   def edit

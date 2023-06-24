@@ -16,3 +16,4 @@
   <p><%= link_to "#{item.comments.count} コメント", item_path(item.id) %></p>
 </div>
 <% end %>
+<%= link_to "あなたのお気に入り一覧", user_bookmarks_path(@user) %>

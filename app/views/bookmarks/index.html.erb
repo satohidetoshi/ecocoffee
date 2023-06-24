@@ -1,0 +1,6 @@
+<h1>お気に入り一覧</h1>
+<h2>
+<% @bookmarks.each do |bookmark| %>
+  <%= link_to bookmark.item.name, item_path(bookmark.item_id) %>
+</h2>
+<% end %>
