@@ -1,0 +1,13 @@
+<div>
+     <%= @user.name %>
+</div>
+<table>
+  <tbody>
+  <tr>
+    <% @items.each do |item| %>  
+      <td> <%= link_to item.name, item_path(item.id) %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+  

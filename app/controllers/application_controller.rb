@@ -8,7 +8,8 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   when User
     user_path(current_user.id)
   end
-
+  
+ 
   end
 
   protected

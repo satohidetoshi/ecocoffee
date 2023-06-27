@@ -2,6 +2,16 @@ Rails.application.routes.draw do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+ namespace :admin do
+
+    #会員
+    resources :users, only: [:show, :edit, :index, :update]
+    #投稿
+    resources :items, only: [:show, :edit, :index, :update, :new, :create]
+    #ホーム画面
+    get '/' => 'homes#top'
+ end
+
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "homes#top"
@@ -16,5 +26,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   resources :users, only: [:show, :edit, :update] do
     resources :bookmarks, only: [:index]
   end
+   
   end
   
