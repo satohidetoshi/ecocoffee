@@ -1,13 +1,23 @@
-<div>
-     <%= @user.name %>
+<div class="container m-5">
+  <h4 class="font-weight-bold bg-info"><%= @user.name %>さんの投稿一覧</h4>
+  <div class="row">
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>投稿ID</th>
+          <th>商品名</th>
+    　　<th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+           <tr>
+             <td class="text-dark"><%= item.id %></td>
+             <td><%= link_to item.name, item_path(item.id) %></td>
+           </tr>
+        <% end %>
+        <%#= paginate @users %>
+      </tbody>
+    </table>
+  </div>
 </div>
-<table>
-  <tbody>
-  <tr>
-    <% @items.each do |item| %>  
-      <td> <%= link_to item.name, item_path(item.id) %></td>
-    <% end %>
-  </tr>
-  </tbody>
-</table>
-  
